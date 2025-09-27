@@ -1,6 +1,4 @@
--- =====================================================
 -- SETUP: Create table and insert test data
--- =====================================================
 
 DROP TABLE IF EXISTS StudentEnrollments;
 
@@ -18,10 +16,8 @@ INSERT INTO StudentEnrollments VALUES
 
 SELECT * FROM StudentEnrollments;
 
--- =====================================================
 -- PART A: DEADLOCK SIMULATION
 -- (Run these in TWO SEPARATE SESSIONS)
--- =====================================================
 
 -- SESSION 1 (User A)
 START TRANSACTION;
@@ -53,9 +49,7 @@ COMMIT;
 
 -- Expected: One session gets a deadlock error
 
--- =====================================================
 -- PART B: MVCC DEMONSTRATION
--- =====================================================
 
 -- Reset data
 UPDATE StudentEnrollments 
@@ -100,9 +94,7 @@ FROM StudentEnrollments
 WHERE student_id = 1;
 COMMIT;
 
--- =====================================================
 -- PART C: COMPARISON WITH AND WITHOUT MVCC
--- =====================================================
 
 -- Reset data
 UPDATE StudentEnrollments 
@@ -174,3 +166,4 @@ SELECT @@transaction_isolation;
 -- Extra info (safe to run)
 SHOW VARIABLES LIKE 'transaction_isolation';
 SHOW VARIABLES LIKE 'innodb_lock_wait_timeout';
+
